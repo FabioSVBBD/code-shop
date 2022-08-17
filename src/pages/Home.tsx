@@ -1,6 +1,5 @@
 import { Cpp, Golang, Javascript, Python, Rust } from '../assets';
-import { Background } from '../components';
-import { LanguageLogo } from '../components/language-logo';
+import { Background, LanguageLogo } from '../components';
 
 export const Home = () => {
   return (

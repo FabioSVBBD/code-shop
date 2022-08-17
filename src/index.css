@@ -9,3 +9,7 @@ body {
   font-weight: 600;
   font-size: 2rem;
 }
+
+.card-width {
+  width: min(24rem, 100%);
+}
