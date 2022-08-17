@@ -1,16 +1,38 @@
 import { Bjarne1 } from '../assets';
 import { Button } from './Button';
 
-// Badge
-// title
-// sub title
-// price
-// old price
-// delta
-// primary cta (add to cart / buy now)
-// secondary cta (like / save for later / share / compare)
+interface Config {
+  src: string;
+  alt: string;
+  title: string;
+  subtext: string;
+  price: string;
+  oldPrice: string;
+  delta: string;
+  badge?: {
+    text: string;
+    color: 'green' | 'purple';
+  };
+  primaryCTA: string;
+  secondaryCTA: string;
+  onPrimaryClick: () => void;
+  onSecondaryClick: () => void;
+}
 
-export const Product = () => {
+export const Product: React.FC<Config> = ({
+  src,
+  alt,
+  title,
+  subtext,
+  price,
+  oldPrice,
+  delta,
+  badge,
+  primaryCTA,
+  secondaryCTA,
+  onPrimaryClick,
+  onSecondaryClick,
+}) => {
   return (
     <article className="flex flex-col bg-black/[.1] card-width text-base sm:text-lg rounded-b-xl rounded-t-sm shadow-lg shadow-gray-800/20">
       <section className="overflow-hidden rounded-t-sm">
