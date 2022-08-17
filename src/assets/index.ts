@@ -9,3 +9,4 @@ export { default as BackArrow } from './back-arrow.svg';
 // C++
 export { default as Bjarne1 } from './bjarne-blue.jpg';
 export { default as Bjarne2 } from './bjarne-white.jpg';
+export { default as CppShirt } from './cpp t-shirt.jpg';

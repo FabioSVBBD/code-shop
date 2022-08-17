@@ -5,6 +5,7 @@ interface Config {
   size?: 'fit' | 'expanding';
   disabled?: boolean;
   children: any;
+  onClick: () => void;
 }
 
 export const Button: React.FC<Config> = ({
@@ -12,6 +13,7 @@ export const Button: React.FC<Config> = ({
   size = 'fit',
   disabled = false,
   children,
+  onClick,
 }) => {
   const buttonClass = classNames(
     'border-2 border-solid rounded-lg px-6 py-1 transition-all hover:drop-shadow-md min-w-fit',
@@ -24,5 +26,9 @@ export const Button: React.FC<Config> = ({
     }
   );
 
-  return <button className={buttonClass}>{children}</button>;
+  return (
+    <button className={buttonClass} onClick={onClick}>
+      {children}
+    </button>
+  );
 };

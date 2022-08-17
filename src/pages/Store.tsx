@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { BackArrow, Bjarne1 } from '../assets';
+import { BackArrow } from '../assets';
 import { Background, Product } from '../components';
 import { useProducts } from '../hooks';
 import { routes } from '../router';
@@ -16,8 +16,6 @@ export const Store = () => {
     }
   }, [language, navigate]);
 
-  console.log('products', products);
-
   return (
     <Background orientation="column">
       <section className="flex items-center gap-4 transition-all hover:gap-6">
@@ -30,24 +28,21 @@ export const Store = () => {
         <h1>{language} Page</h1>
       </section>
 
-      {products.map((product) => (
-        <h2>{product}</h2>
-      ))}
-
       <section className="flex flex-wrap w-[90%] py-8 mx-auto gap-x-8 gap-y-4">
-        <Product
-          src={Bjarne1}
-          alt="Bjarne Stroustrup T-Shirt"
-          title="Bjarne Stroustrup T-Shirt"
-          subtext="He's the dude that made C++"
-          price="R 499.99"
-          oldPrice="R 699.99"
-          delta="-20%"
-          primaryCTA="Add to cart"
-          secondaryCTA="Share"
-          onPrimaryClick={() => {}}
-          onSecondaryClick={() => {}}
-        />
+        {products.map((product) => (
+          <Product
+            src={product.src}
+            title={product.title}
+            subtext={product.subtext}
+            price={product.price}
+            oldPrice={product.oldPrice}
+            delta={product.delta}
+            primaryCTA="Add to cart"
+            secondaryCTA="Share"
+            onPrimaryClick={() => {}}
+            onSecondaryClick={() => {}}
+          />
+        ))}
       </section>
     </Background>
   );
