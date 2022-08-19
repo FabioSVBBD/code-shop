@@ -1,7 +1,6 @@
 import { Outlet, useOutlet } from 'react-router-dom';
+import { Background, Header, LanguageLogo, Footer } from '../components';
 import { Cpp, Golang, Javascript, Python, Rust } from '../assets';
-import { Background, Header, LanguageLogo } from '../components';
-import { Footer } from '../components';
 
 export const Store = () => {
   const outlet = useOutlet();
