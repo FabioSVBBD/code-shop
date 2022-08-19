@@ -13,3 +13,10 @@ body {
 .card-width {
   width: min(24rem, 100%);
 }
+
+.vertical-text {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  height: fit-content;
+}

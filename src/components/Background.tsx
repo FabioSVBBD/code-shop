@@ -11,7 +11,7 @@ export const Background: React.FC<Config> = ({
     <section
       className={`min-h-screen w-full bg-gradient-to-r from-purple-400 to-red-300 flex ${
         orientation === 'column' && 'flex-col'
-      } justify-evenly items-center`}
+      } justify-between items-center`}
     >
       {children}
     </section>

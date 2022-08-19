@@ -1,49 +1,30 @@
-import { useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { BackArrow } from '../assets';
-import { Background, Product } from '../components';
-import { useProducts } from '../hooks';
-import { routes } from '../router';
+import { Outlet, useOutlet } from 'react-router-dom';
+import { Cpp, Golang, Javascript, Python, Rust } from '../assets';
+import { Background, Header, LanguageLogo } from '../components';
+import { Footer } from '../components';
 
 export const Store = () => {
-  const { language } = useParams();
-  const navigate = useNavigate();
-  const products = useProducts(language || '');
-
-  useEffect(() => {
-    if (language && !(language in routes)) {
-      navigate('/*');
-    }
-  }, [language, navigate]);
+  const outlet = useOutlet();
 
   return (
     <Background orientation="column">
-      <section className="flex items-center gap-4 transition-all hover:gap-6">
-        <img
-          src={BackArrow}
-          alt="<"
-          onClick={() => navigate(-1)}
-          className="h-12 transition-all hover:cursor-pointer hover:h-16"
-        />
-        <h1>{language} Page</h1>
-      </section>
-
-      <section className="flex flex-wrap w-[90%] py-8 mx-auto gap-x-8 gap-y-4">
-        {products.map((product) => (
-          <Product
-            src={product.src}
-            title={product.title}
-            subtext={product.subtext}
-            price={product.price}
-            oldPrice={product.oldPrice}
-            delta={product.delta}
-            primaryCTA="Add to cart"
-            secondaryCTA="Share"
-            onPrimaryClick={() => {}}
-            onSecondaryClick={() => {}}
+      <Header />
+      {outlet ? (
+        <Outlet />
+      ) : (
+        <section className="flex items-center w-full justify-evenly">
+          <LanguageLogo src={Python} alt="python" target="/store/python" />
+          <LanguageLogo src={Cpp} alt="c++" target="/store/c++" />
+          <LanguageLogo src={Golang} alt="golang" target="/store/golang" />
+          <LanguageLogo
+            src={Javascript}
+            alt="javascript"
+            target="/store/javascript"
           />
-        ))}
-      </section>
+          <LanguageLogo src={Rust} alt="rust" target="/store/rust" />
+        </section>
+      )}
+      <Footer />
     </Background>
   );
 };
