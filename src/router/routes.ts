@@ -4,4 +4,11 @@ export const routes = {
   golang: true,
   javascript: true,
   rust: true,
+  angular: true,
+  'c-sharp': true,
+  java: true,
+  ruby: true,
+  svelte: true,
+  typescript: true,
+  mongo: true,
 };

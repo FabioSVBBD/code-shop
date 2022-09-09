@@ -35,8 +35,11 @@ export const BurgerMenu: React.FC<Config> = ({ className, options }) => {
             top: burgerRef.current?.parentNode?.getBoundingClientRect().height,
           }}
         >
-          {options?.map((option) => (
-            <li className="border-b-2 border-black/[.2] last:border-b-0 flex items-center py-2 justify-center">
+          {options?.map((option, index) => (
+            <li
+              key={`burger_${option.key}_${index}`}
+              className="border-b-2 border-black/[.2] last:border-b-0 flex items-center py-2 justify-center"
+            >
               {option}
             </li>
           ))}

@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Body, Product } from '../components';
+import { AppContext } from '../context/app-context';
 import { useProducts } from '../hooks';
 import { routes } from '../router';
+import { BasketService } from '../services/basket.service';
 
 export const StoreOutlet = () => {
+  const { basket, updateBasket } = useContext(AppContext);
   const { language } = useParams();
   const navigate = useNavigate();
   const products = useProducts(language || '');
@@ -14,6 +17,16 @@ export const StoreOutlet = () => {
       navigate('/*');
     }
   }, [language, navigate]);
+
+  useEffect(() => {
+    console.log('basket', basket);
+  }, [basket]);
+
+  const addToCart = (index: number) => {
+    if (index >= products.length) return;
+
+    BasketService.addToBasket(basket, products[index], updateBasket);
+  };
 
   return (
     <Body>
@@ -27,8 +40,9 @@ export const StoreOutlet = () => {
         </section>
 
         <section className="flex flex-wrap justify-center w-11/12 mx-auto sm:w-full gap-x-6 gap-y-4">
-          {products.map((product) => (
+          {products.map((product, index) => (
             <Product
+              key={`store_${language}_${product.title}`}
               src={product.src}
               title={product.title}
               subtext={product.subtext}
@@ -37,7 +51,7 @@ export const StoreOutlet = () => {
               delta={product.delta}
               primaryCTA="Add to cart"
               secondaryCTA="Share"
-              onPrimaryClick={() => {}}
+              onPrimaryClick={() => addToCart(index)}
               onSecondaryClick={() => {}}
             />
           ))}
