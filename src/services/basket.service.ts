@@ -1,3 +1,4 @@
+import { trimAlpha } from '../helpers';
 import { ProductDTO } from '../types';
 import { Product } from '../types/app';
 
@@ -21,7 +22,7 @@ const addToBasket = (
   products[productDTO.title] = {
     id: productDTO.title,
     name: productDTO.title,
-    price: Number(productDTO.price),
+    price: Number(trimAlpha(productDTO.price)),
     currency: 'ZAR',
     quantity: (products[productDTO.title]?.quantity || 0) + 1,
   };
