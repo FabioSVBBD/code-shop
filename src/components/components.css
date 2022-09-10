@@ -1,0 +1,11 @@
+.burger-menu-first-line-rotate {
+  transform: rotate(45deg) translateX(0.3rem) translateY(0.3rem);
+}
+
+.burger-menu-last-line-rotate {
+  transform: rotate(-45deg) translateX(0rem) translateY(-0.1rem);
+}
+
+.transition-all-children * {
+  transition: all 0.2s ease;
+}

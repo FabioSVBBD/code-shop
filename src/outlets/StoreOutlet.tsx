@@ -28,7 +28,7 @@ export const StoreOutlet = () => {
 
     BasketService.addToBasket(basket, products[index], updateBasket);
     ToastService.notify({
-      message: `Product ${index + 1} added to basket`,
+      message: `'${products[index].title}' added`,
       duration: 1500,
     });
   };

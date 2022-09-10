@@ -5,7 +5,7 @@ import { BurgerMenu } from './BurgerMenu';
 
 export const Header = () => {
   return (
-    <header className="bg-black/[.6] sm:bg-black/[.2] shadow-md w-full flex px-4 py-2 sm:px-8 items-center justify-between">
+    <header className="bg-black/[.6] sm:bg-black/[.2] shadow-md w-full flex px-4 py-2 sm:px-8 items-center justify-between relative">
       <BurgerMenu
         className="sm:hidden"
         options={[
