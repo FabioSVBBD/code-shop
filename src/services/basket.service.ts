@@ -1,6 +1,7 @@
 import { trimAlpha } from '../helpers';
 import { ProductDTO } from '../types';
 import { Product } from '../types/app';
+import { CacheService } from './cache.service';
 
 interface ProductObject {
   [key: string]: Product;
@@ -32,7 +33,27 @@ const addToBasket = (
 
 const removeFromBasket = () => {};
 
+const getTotalCost = (basket: Product[]): number => {
+  return (
+    basket.reduce<number>((prev, curr) => {
+      return prev + curr.price * 100 * curr.quantity;
+    }, 0) / 100
+  );
+};
+
+const getCurrency = (basket: Product[]): string => {
+  const [product] = basket;
+
+  if (product) {
+    return product.currency;
+  }
+
+  return '';
+};
+
 export const BasketService = {
   addToBasket,
   removeFromBasket,
+  getTotalCost,
+  getCurrency,
 };

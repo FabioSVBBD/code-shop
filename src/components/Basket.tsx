@@ -3,13 +3,15 @@ import classNames from 'classnames';
 import { Basket as BasketImage } from '../assets';
 import { Product } from '../types/app';
 import { Button } from './Button';
-import { ToastService } from '../services';
+import { BasketService, ToastService } from '../services';
+import { useNavigate } from 'react-router-dom';
 
 interface BasketProps {
   products: Product[];
 }
 
 export const Basket: React.FC<BasketProps> = ({ products }) => {
+  const navigate = useNavigate();
   const basketImageRef = useRef<HTMLImageElement>(null);
   const [basketOpen, setBasketOpen] = useState(false);
 
@@ -20,7 +22,7 @@ export const Basket: React.FC<BasketProps> = ({ products }) => {
   }, [products, basketOpen]);
 
   const checkoutClicked = () => {
-    // go to checkout
+    navigate('/checkout');
   };
 
   const top = useMemo(
@@ -29,23 +31,12 @@ export const Basket: React.FC<BasketProps> = ({ products }) => {
     [basketImageRef]
   );
 
-  const total = useMemo(
-    (): number =>
-      products.reduce<number>((prev, curr) => {
-        return prev + curr.price * 100 * curr.quantity;
-      }, 0) / 100,
+  const total = useMemo(() => BasketService.getTotalCost(products), [products]);
+
+  const currency = useMemo(
+    () => BasketService.getCurrency(products),
     [products]
   );
-
-  const currency = useMemo((): string => {
-    const [product] = products;
-
-    if (product) {
-      return product.currency;
-    }
-
-    return '';
-  }, [products]);
 
   const container = classNames(
     'absolute bg-black/[.6] right-0 transition-all overflow-hidden rounded-bl-md py-4 text-sm',
