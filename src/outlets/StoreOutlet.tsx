@@ -4,6 +4,7 @@ import { Body, Product } from '../components';
 import { AppContext } from '../context/app-context';
 import { useProducts } from '../hooks';
 import { routes } from '../router';
+import { ToastService } from '../services';
 import { BasketService } from '../services/basket.service';
 
 export const StoreOutlet = () => {
@@ -26,6 +27,10 @@ export const StoreOutlet = () => {
     if (index >= products.length) return;
 
     BasketService.addToBasket(basket, products[index], updateBasket);
+    ToastService.notify({
+      message: `Product ${index + 1} added to basket`,
+      duration: 1500,
+    });
   };
 
   return (
