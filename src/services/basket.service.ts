@@ -1,7 +1,6 @@
 import { trimAlpha } from '../helpers';
 import { ProductDTO } from '../types';
 import { Product } from '../types/app';
-import { CacheService } from './cache.service';
 
 interface ProductObject {
   [key: string]: Product;

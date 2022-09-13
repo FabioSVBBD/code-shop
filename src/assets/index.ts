@@ -12,6 +12,8 @@ export { default as Svelte } from './svelte.png';
 export { default as TypeScript } from './typescript.png';
 export { default as Mongo } from './mongo.svg';
 
+export { default as InputError } from './input-error.svg';
+
 // CTA images
 export { default as BackArrow } from './back-arrow.svg';
 export { default as Basket } from './basket.svg';

@@ -20,3 +20,7 @@ body {
   transform: rotate(180deg);
   height: fit-content;
 }
+
+.form-width {
+  width: min(24rem, 94vw);
+}

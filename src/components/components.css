@@ -9,3 +9,11 @@
 .transition-all-children * {
   transition: all 0.2s ease;
 }
+
+.w-input {
+  width: min(24rem, 90vw);
+}
+
+.transform-input-label {
+  transform: translate(0, -1rem);
+}

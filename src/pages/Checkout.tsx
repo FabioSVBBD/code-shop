@@ -1,12 +1,15 @@
 import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useNavigate, useOutlet } from 'react-router-dom';
 
 export const Checkout: React.FC = () => {
   const navigate = useNavigate();
+  const outlet = useOutlet();
 
   useEffect(() => {
-    navigate('summary');
-  }, []);
+    if (!outlet) {
+      navigate('summary');
+    }
+  }, [outlet, navigate]);
 
   return <Outlet />;
 };

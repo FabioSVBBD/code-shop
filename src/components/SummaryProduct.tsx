@@ -1,4 +1,4 @@
-interface SummaryProduct {
+interface SummaryProductProps {
   src: string;
   name: string;
   quantity: number;
@@ -6,7 +6,7 @@ interface SummaryProduct {
   currency: string;
 }
 
-export const SummaryProduct: React.FC<SummaryProduct> = ({
+export const SummaryProduct: React.FC<SummaryProductProps> = ({
   src,
   name,
   quantity,
